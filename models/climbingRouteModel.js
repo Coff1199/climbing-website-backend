@@ -13,12 +13,10 @@ const climbingRouteSchema = new mongoose.Schema({
     setter: String,
     flashes: {
         type: Number,
-        required: [true, 'flashes is required field'], 
         default: 0
     },
     sends: {
         type: Number,
-        required: [true, 'sends is required field'], 
         default: 0
     }
 });
