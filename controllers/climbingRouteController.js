@@ -43,7 +43,7 @@ exports.createClimbingRoute = async (req, res) => {
         res.status(201).json({
             status: 'success',
             data: {
-                newClimbingRoute
+                climbingRoute: newClimbingRoute
             }
         });
     } catch(err) {
@@ -54,8 +54,22 @@ exports.createClimbingRoute = async (req, res) => {
     }
 }
 
-exports.updateClimbingRoute = (req, res) => {
-    
+exports.updateClimbingRoute = async (req, res) => {
+    try {
+        const updatedClimbingRoute = await ClimbingRoute.findByIdAndUpdate(req.params.id, req.body, {new: true, runValidators: true});
+
+        res.status(200).json({
+            status: 'success',
+            data: {
+                climbingRoute: updatedClimbingRoute
+            }
+        });
+    } catch(err) {
+        res.status(404).json({
+            status: 'fail',
+            message: err.message
+        });
+    }
 }
 
 exports.deleteClimbingRoute = (req, res) => {
