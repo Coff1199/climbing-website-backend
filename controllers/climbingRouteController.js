@@ -72,6 +72,18 @@ exports.updateClimbingRoute = async (req, res) => {
     }
 }
 
-exports.deleteClimbingRoute = (req, res) => {
-    
+exports.deleteClimbingRoute = async (req, res) => {
+    try {
+        const climbingRouteToDelete = await ClimbingRoute.findByIdAndDelete(req.params.id, req.body, {new: true, runValidators: true});
+
+        res.status(204).json({
+            status: 'success',
+            data: null
+        });
+    } catch(err) {
+        res.status(404).json({
+            status: 'fail',
+            message: err.message
+        });
+    }
 }
