@@ -1,4 +1,3 @@
-
 const express = require('express');
 const climbingRouteController = require('../controllers/climbingRouteController');
 
