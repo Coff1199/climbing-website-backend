@@ -3,8 +3,6 @@ const climbingRouteController = require('../controllers/climbingRouteController'
 
 const climbingRouteRouter =  express.Router();
 
-//moviesRouter.param('id', moviesController.checkId);
-
 climbingRouteRouter.route('/')
     .get(climbingRouteController.getAllClimbingRoutes)
     .post(climbingRouteController.createClimbingRoute);
